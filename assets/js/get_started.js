@@ -1,5 +1,5 @@
-const database = "http://127.0.0.1:8000"
-// const database = "https://pawsandheart-db.onrender.com"
+// const database = "http://127.0.0.1:8000"
+const database = "https://pawsandheart-db.onrender.com"
 
 function switchTab(selectedTabId, tabToShow) {
     document.getElementById('signup').classList.add('hidden');
