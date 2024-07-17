@@ -4,6 +4,8 @@ let currentPage = 1;
 let count;
 
 const loadStatements = () => {
+    const userId = localStorage.getItem("user_id");
+    
     fetch(`${database}/transactions/list/?account=${userId}&page=${currentPage}`)
         .then((res) => res.json())
         .then((data) => {
