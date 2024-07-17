@@ -1,0 +1,53 @@
+:root {
+    font-family: "Roboto Slab", serif !important;
+}
+
+.hero-bg-image {
+    position: relative;
+    height: 100vh;
+    background: url('./assets/images/hero-bg.jpeg') no-repeat center center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+}
+
+.contact-bg-image {
+    position: relative;
+    height: 100%;
+    background: url('./assets/images/contact-bg.png') no-repeat;
+    background-position: contain;
+}
+
+.review-bg-image {
+    position: relative;
+    height: 100%;
+    background: url('./assets/images/review-bg.png') no-repeat center center/cover;
+    background-position: bottom;
+}
+
+
+@media (prefers-reduced-motion: no-preference) {
+    .slider-nav-animation.slider-nav-animation-fadein .slider-container>*>* {
+        opacity: 100% !important;
+    }
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: white;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #d8437f;
+    border-radius: 15px;
+}
+
+::selection {
+    color: white;
+    background-color: #BE185D;
+}

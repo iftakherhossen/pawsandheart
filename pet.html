@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/swiffy-slider@1.6.0/dist/css/swiffy-slider.min.css" rel="stylesheet" crossorigin="anonymous" />
+    <title>Pet Details - PawsAndHeart</title>
+</head>
+<body>
+    <header>
+        <!-- Navigation Bar -->
+        <nav class="bg-white w-full border-b border-gray-200">
+            <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 space-y-4 sm:space-y-0">
+                <a href="index.html" class="flex items-center space-x-3">
+                    <img src="./assets/images/logo.png" class="h-10" alt="Logo">
+                    <span class="self-center text-2xl font-semibold whitespace-nowrap">PawsAndHeart</span>
+                </a>
+                <div class="flex md:order-2 space-x-3 md:space-x-0">
+                    <div class="flex items-center gap-3">
+                        <a href="get_started.html" class="text-white bg-pink-600 hover:bg-pink-700 focus:outline-none font-medium rounded-lg text-lg px-4 py-2 text-center" id="get-started-btn">Get Started</a>
+                        <button type="button" class="flex text-sm bg-gray-800 rounded-full md:me-0 border border-pink-500" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom" id="user-profile-btn">
+                            <span class="sr-only">Open user menu</span>
+                             <img class="w-11 h-11 rounded-full" src="https://randomuser.me/api/portraits/lego/1.jpg" alt="user photo">
+                        </button>
+                        <div class="z-50 hidden my-5 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow w-60" id="user-dropdown">
+                            <ul class="py-2" aria-labelledby="user-menu-button">
+                                <li>
+                                    <a href="profile.html" class="block px-4 py-2 text-lg font-medium hover:font-semibold text-gray-700 hover:text-gray-900 hover:bg-pink-100">Profile</a>
+                                </li>
+                                <li>
+                                    <a href="deposit.html" class="block px-4 py-2 text-lg font-medium hover:font-semibold text-gray-700 hover:text-gray-900 hover:bg-pink-100">Deposit</a>
+                                </li>
+                                <li>
+                                    <a href="statements.html" class="block px-4 py-2 text-lg font-medium hover:font-semibold text-gray-700 hover:text-gray-900 hover:bg-pink-100">Statements</a>
+                                </li>
+                                <li>
+                                    <button type="button" class="block w-full text-left px-4 py-2 text-[17px] font-medium hover:font-semibold text-gray-700 hover:text-gray-900 hover:bg-pink-100" onclick="handleLogOut(event)">Logout</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>                    
+                    <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none" aria-controls="navbar-sticky" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+                    <ul class="flex flex-col p-4 md:p-0 mt-4 text-xl font-bold border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 md:flex-row md:mt-0 md:border-0 md:bg-white">
+                        <li>
+                            <a href="index.html" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-pink-600 md:p-0">Home</a>
+                        </li>
+                        <li>
+                            <a href="pets.html" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-pink-600 md:p-0">Pets</a>
+                        </li>
+                        <li>
+                            <a href="index.html#contact" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-pink-600 md:p-0">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>        
+        <section class="max-w-screen-xl mx-auto p-10">
+            <div>
+                <div id="spinner" role="status" class="py-10">
+                    <svg aria-hidden="true" class="w-8 h-8 text-gray-50 animate-spin fill-blue-600 mx-auto" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
+                        <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/>
+                    </svg>
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
+            <div id="nodata">
+                <img src="./assets/images/no-data.png" alt="No Data" class="mx-auto" />
+            </div>            
+            
+            <div id="pet-alert-wrapper"></div>
+            <div class="p-4 mb-5 rounded-lg font-medium text-lg hidden" role="alert" id="alert"></div>
+            <!-- Pet Details Section -->
+            <div id="pet-wrapper"></div>
+
+            <div class="flex flex-col gap-8 mt-16">
+                <!-- Pet Review Form -->
+                <div class="bg-pink-100 p-6 md:p-10 flex flex-col gap-4 hidden" id="review-form-wrapper">
+                    <h3 class="text-2xl font-bold m-2">Leave a review</h3>
+                    <form id="review-form" class="flex flex-col gap-1">                        
+                        <div>
+                            <label for="username" class="block m-2 text-lg font-semibold text-gray-900">Username <span class="text-sm text-red-500">*</span></label>
+                            <input type="text" id="username" name="username" class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-pink-500 focus:border-pink-500 block w-full px-4 py-2.5 font-semibold" readonly required />
+                        </div>
+                        <div>
+                            <label for="review" class="block m-2 text-lg font-semibold text-gray-900">Review <span class="text-sm text-red-500">*</span></label>
+                            <textarea rows="5" id="review" name="review" class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-pink-500 focus:border-pink-500 block w-full px-4 py-2.5 font-semibold resize-none" placeholder="Type your review here" required></textarea>
+                        </div>   
+                        <div>
+                            <label for="rating" class="block m-2 text-lg font-semibold text-gray-900">Rating <span class="text-sm text-red-500">*</span></label>
+                            <select id="rating" name="rating" class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-pink-500 focus:border-pink-500 block w-full px-4 py-2.5 font-semibold resize-none" required>
+                                <option value="⭐" selected>⭐</option>
+                                <option value="⭐⭐">⭐⭐</option>
+                                <option value="⭐⭐⭐">⭐⭐⭐</option>
+                                <option value="⭐⭐⭐⭐">⭐⭐⭐⭐</option>
+                                <option value="⭐⭐⭐⭐⭐">⭐⭐⭐⭐⭐</option>
+                            </select>
+                        </div>                         
+                        <div class="mt-2">
+                            <button type="submit" class="text-white font-semibold text-lg bg-pink-600 hover:bg-pink-700 focus:ring-0 focus:outline-none font-medium rounded-lg w-full sm:w-auto px-5 py-2 text-center mt-3">Submit</button>
+                        </div>
+                    </form>
+                </div>
+                <!-- Pet Reviews Section -->
+                <div class="grid grid-cols-1 gap-5" id="pet-reviews"></div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer Section -->
+    <footer>
+        <div class="max-w-screen-xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-10 py-20">
+                <div class="flex flex-col gap-4">
+                    <div class="flex items-center justify-start gap-3">
+                        <img src="./assets/images/logo.png" alt="logo" class="w-9 h-9">
+                        <h2 class="text-3xl font-bold">PawsAndHeart</h2>
+                    </div>
+                    <p class="text-[17.2px] font-medium text-gray-600">Seddo eiusmod tempor incididunt ut labore et dolore magna aliqua. Conse ctetur pisicin elit, sed do eiusmod tempor.</p>
+                </div>
+                <div class="grid grid-cols-2">
+                    <div class="flex flex-col gap-4">
+                        <h2 class="text-lg md:text-xl font-bold">Navigation</h2>
+                        <div class="flex flex-col gap-2 font-medium">
+                            <p><a href="index.html" class="hover:underline">Home</a></p>
+                            <p><a href="pets.html" class="hover:underline">Pets</a></p>
+                            <p><a href="index.html#reviews" class="hover:underline">Reviews</a></p>
+                            <p><a href="index.html#contact" class="hover:underline">Contact</a></p>
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-4">
+                        <h3 class="text-lg md:text-xl font-bold">Useful Links</h3>
+                        <div class="flex flex-col gap-2 font-medium">
+                            <p class="cursor-pointer hover:underline">Instructions</p>
+                            <p class="cursor-pointer hover:underline">Terms & Conditions</p>
+                            <p class="cursor-pointer hover:underline">Privacy Policy</p>
+                            <p class="cursor-pointer hover:underline">FAQ</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <h3 class="text-lg md:text-xl font-bold">Subscribe Our Newsletter</h3>
+                    <p>Subscribe our newsletter to get updates about our services and offers.</p>
+                    <form>
+                        <div class="relative">
+                            <input type="email" id="subscribe_email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-xl block w-full px-3 py-2.5focus:border-gray-300 focus:ring-0" placeholder="name@company.com" required />
+                            <button class="absolute bottom-0 top-0 right-0 rounded-xl px-3 py-2.5 font-medium hover:bg-pink-500 hover:text-white">Subscribe</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="w-full text-center py-6 bg-gray-100 shadow-lg">
+            <p class="text-[16.5px] font-medium text-gray-600">
+                © <span id="year"></span>
+                <a href="index.html" class="hover:underline">PawsAndHeart</a>™ All Rights Reserved.
+                Developed by <a href="https://iftakherhossen.vercel.app/" class="hover:underline">Iftakher Hossen</a>
+            </p>
+        </div>
+    </footer>   
+    
+    <script src="./assets/js/pet.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
+</body>
+</html>
